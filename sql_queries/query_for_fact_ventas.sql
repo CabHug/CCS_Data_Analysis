@@ -1,0 +1,42 @@
+SELECT
+	cl."NUMERO_DE_IDENTIFICACION",
+	cl."PRIMER_APELLIDO",
+	cl."SEGUNDO_APELLIDO",
+	cl."PRIMER_NOMBRE",
+	cl."SEGUNDO_NOMBRE",
+	fv."PRECIO_NETO",
+	fv."FECHA_DE_PAGO",
+	fv."RENOVACION",
+	fv."FECHA_DE_VENTA",
+	pf."PROFESION",
+	gn."GENERO",
+	cl."FECHA_DE_NACIMIENTO",
+	ct."CIUDAD_REGION",
+	md."MODALIDAD",
+	pc."PROCEDENCIA",
+	mp."MEDIO_DE_PAGO",
+	rv."RESPONSABLE_VENTA",
+	el."RESPONSABLE_VENTA" AS Elaboro
+	
+FROM fact_ventas AS fv
+
+LEFT JOIN clientes as cl
+	ON fv."CLIENTE_ID" = cl."CLIENTE_ID"
+LEFT JOIN profesion as pf
+	ON cl."PROFESION_ID" = pf."PROFESION_ID"
+LEFT JOIN genero as gn
+	ON gn."GENERO_ID" = cl."GENERO_ID"
+LEFT JOIN ciudad_region as ct
+	ON ct."CIUDAD_REGION_ID" = cl."CIUDAD_REGION_ID"
+LEFT JOIN modalidad as md
+	ON fv."MODALIDAD_ID" = md."MODALIDAD_ID"
+LEFT JOIN procedencia as pc
+	ON fv."PROCEDENCIA_ID" = pc."PROCEDENCIA_ID"
+LEFT JOIN medio_de_pago as mp
+	ON fv."MEDIO_DE_PAGO_ID" = mp."MEDIO_DE_PAGO_ID"
+LEFT JOIN responsable_venta as rv
+	ON rv."RESPONSABLE_VENTA_ID" = fv."RESPONSABLE_VENTA_ID"
+LEFT JOIN responsable_venta as el
+	ON el."RESPONSABLE_VENTA_ID" = fv."ELABORO"
+
+;

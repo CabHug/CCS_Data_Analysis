@@ -1,0 +1,20 @@
+# Ignorar archivos de texto
+*.txt
+
+# Ignorar archivos CSV
+*.csv
+
+# Ignorar archivos Excel 
+*.xls
+*.xlsx
+*.xlsm
+*.xlsb
+*.xltx
+*.xltm
+
+# Ignorar archivos de Power BI
+*.pbix
+*.pbit
+
+# Ignorar carpetas
+/data_source/

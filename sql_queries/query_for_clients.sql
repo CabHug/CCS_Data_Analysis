@@ -1,0 +1,48 @@
+
+SELECT
+	DISTINCT cl."NUMERO_DE_IDENTIFICACION",
+	cl."PRIMER_APELLIDO",
+	cl."SEGUNDO_APELLIDO",
+	cl."PRIMER_NOMBRE",
+	cl."SEGUNDO_NOMBRE",
+	pf."PROFESION",
+	gn."GENERO",
+	cl."FECHA_DE_NACIMIENTO",
+	ct."CIUDAD_REGION",
+	COUNT(DISTINCT(md."MODALIDAD")) AS Modalidad,
+	COUNT(DISTINCT(pc."PROCEDENCIA")) AS Procedencia,
+	COUNT(DISTINCT(mp."MEDIO_DE_PAGO")) AS M_Pago,
+	
+	COUNT(cl."NUMERO_DE_IDENTIFICACION") as T_Compras,
+	SUM(fv."PRECIO_NETO") as T_Comprado
+
+FROM fact_ventas as fv
+
+LEFT JOIN clientes as cl
+	ON fv."CLIENTE_ID" = cl."CLIENTE_ID"
+LEFT JOIN profesion as pf
+	ON cl."PROFESION_ID" = pf."PROFESION_ID"
+LEFT JOIN genero as gn
+	ON gn."GENERO_ID" = cl."GENERO_ID"
+LEFT JOIN ciudad_region as ct
+	ON ct."CIUDAD_REGION_ID" = cl."CIUDAD_REGION_ID"
+LEFT JOIN modalidad as md
+	ON fv."MODALIDAD_ID" = md."MODALIDAD_ID"
+LEFT JOIN procedencia as pc
+	ON fv."PROCEDENCIA_ID" = pc."PROCEDENCIA_ID"
+LEFT JOIN medio_de_pago as mp
+	ON fv."MEDIO_DE_PAGO_ID" = mp."MEDIO_DE_PAGO_ID"
+
+GROUP BY 
+	cl."NUMERO_DE_IDENTIFICACION",
+	cl."PRIMER_APELLIDO",
+	cl."SEGUNDO_APELLIDO",
+	cl."PRIMER_NOMBRE",
+	cl."SEGUNDO_NOMBRE",
+	pf."PROFESION",
+	gn."GENERO",
+	cl."FECHA_DE_NACIMIENTO",
+	ct."CIUDAD_REGION"
+	
+ORDER BY T_Compras DESC, T_Comprado DESC
+;
