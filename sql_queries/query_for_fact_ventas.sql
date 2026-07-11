@@ -4,6 +4,7 @@ SELECT
 	cl."SEGUNDO_APELLIDO",
 	cl."PRIMER_NOMBRE",
 	cl."SEGUNDO_NOMBRE",
+	cr."CURSO",
 	fv."PRECIO_NETO",
 	fv."FECHA_DE_PAGO",
 	fv."RENOVACION",
@@ -38,5 +39,7 @@ LEFT JOIN responsable_venta as rv
 	ON rv."RESPONSABLE_VENTA_ID" = fv."RESPONSABLE_VENTA_ID"
 LEFT JOIN responsable_venta as el
 	ON el."RESPONSABLE_VENTA_ID" = fv."ELABORO"
+LEFT JOIN cursos as cr
+	ON fv."CURSO_ID" = cr."CURSO_ID"
 
 ;
