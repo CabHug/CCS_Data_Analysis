@@ -81,6 +81,31 @@ The analysis suggests that the following factors have the strongest impact on bu
 
 5. **January has historically been the strongest sales month** for both the CCS Pasto branch and its sales representatives.
 
+## K-Means Clustering Analysis
+
+Using **K-Means clustering**, the dataset was adapted to represent, for each client:
+- Number of purchases made
+- Age
+- Average purchase amount during the period **2024–2025**
+
+The goal was to identify the group of clients with the highest purchase index.  
+The study revealed that **Cluster 3** contains the clients with the **highest purchase amounts** and also the **highest average number of purchases**.
+
+---
+
+### Results by Cluster
+
+| CLUSTERS | GENDER    | Age   | Purchases | Count | Total        |
+|----------|-----------|-------|-----------|-------|--------------|
+| 0        | Female    | 30.03 | 2.16      | 440   | 83,472.15    |
+| 0        | Male      | 29.85 | 2.17      | 147   | 79,925.16    |
+| 1        | Female    | 36.23 | 2.59      | 284   | 98,735.92    |
+| 1        | Male      | 37.92 | 2.44      | 126   | 97,686.65    |
+| 2        | Female    | 46.27 | 1.90      | 266   | 67,392.29    |
+| 2        | Male      | 47.64 | 1.98      | 98    | 81,255.10    |
+| 3        | Female    | 34.58 | 6.87      | 123   | 269,425.98   |
+| 3        | Male      | 32.08 | 7.04      | 53    | 288,094.23   |
+
 
 # Key Business Takeaways
 
